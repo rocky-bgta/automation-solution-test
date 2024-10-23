@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("product")
+@RestController()
+@RequestMapping("product")
 public class ProductController {
 
 
