@@ -17,15 +17,18 @@ public class UserService {
         user1.setName("Jack");
         user1.setEmail("demo@gmail.com");
 
+
         UserModel user2 = new UserModel();
         user2.setId(2);
-        user2.setName("Jack");
+        user2.setName("rocky");
         user2.setEmail("demo@gmail.com");
+        user2.setPassword("test123");
 
         UserModel user3 = new UserModel();
-        user3.setId(2);
-        user3.setName("Jack");
+        user3.setId(3);
+        user3.setName("rahim");
         user3.setEmail("demo@gmail.com");
+        user3.setPassword("test1234");
 
         users.add(user1);
         users.add(user2);

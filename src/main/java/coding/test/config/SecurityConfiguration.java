@@ -1,4 +1,3 @@
-/*
 package coding.test.config;
 
 import org.springframework.context.annotation.Bean;
@@ -21,17 +20,14 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-               // .cors(corsConfig -> corsConfig.configurationSource(customCorsConfiguration))
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(new AntPathRequestMatcher("/admin-user")).hasRole("ADMIN")
-                        .requestMatchers(new AntPathRequestMatcher("/normal-user")).hasAnyRole("ADMIN", "USER")
+
                         .requestMatchers(
                                 new AntPathRequestMatcher("/user/**"),
                                 new AntPathRequestMatcher("/product/**"),
-                                new AntPathRequestMatcher("/swagger-ui.html"),
-                                new AntPathRequestMatcher("/v3/**")
+                                new AntPathRequestMatcher("/login/**")
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -39,7 +35,6 @@ public class SecurityConfiguration {
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
-                //.addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -51,4 +46,3 @@ public class SecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }
-*/
